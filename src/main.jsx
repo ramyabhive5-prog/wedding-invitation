@@ -261,11 +261,11 @@ setWishModalOpen(false);
     
   };
 
-  const sendWish = (message = wish) => {
-    const number = '919345862145';
-    const text = message.trim() || 'Wishing D. Sowndhararajan & R. Vanitha a life filled with prosperity, love, and happiness. May their journey together be blessed with endless joy and togetherness! ❤️.';
-    window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
-  };
+  // const sendWish = (message = wish) => {
+  //   const number = '919345862145';
+  //   const text = message.trim() || 'Wishing D. Sowndhararajan & R. Vanitha a life filled with prosperity, love, and happiness. May their journey together be blessed with endless joy and togetherness! ❤️.';
+  //   window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
+  // };
 
   const copyAddress = async () => {
     try { await navigator.clipboard.writeText(`${WEDDING.venue}, ${WEDDING.address}`); setCopied(true); setTimeout(() => setCopied(false), 1800); }
@@ -287,7 +287,7 @@ setWishModalOpen(false);
       <div className="cover-card">
         <div className="cover-topline"><span>✦</span><span>♡</span><span>✦</span><span>♡</span><span>✦</span></div>
         <div className="cover-glow" />
-        <div className="cover-emblem"><Heart size={30} fill="currentColor" /><span>D <i>&</i> V</span></div>
+        <div className="cover-emblem"><Heart size={30} fill="currentColor" /><span>S <i>&</i> V</span></div>
         <p className="eyebrow">WITH THE BLESSINGS OF OUR FAMILIES</p>
         <h1 className="cover-title">Wedding<br /><em>Invitation</em></h1>
         <div className="cover-names"><span>{WEDDING.groom}</span><b>&</b><span>{WEDDING.bride}</span></div>
@@ -314,7 +314,7 @@ setWishModalOpen(false);
         <div className="card-inner" key={slide}>
           <div className="slide-count">Wedding Invitation ♡♡ <span>{String(slide + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}</span></div>
           {slide === 0 && <section className="view welcome-view">
-            <div className="mini-emblem"><Heart size={27} fill="currentColor" /><span>D <i>&</i> V</span></div>
+            <div className="mini-emblem"><Heart size={27} fill="currentColor" /><span>S <i>&</i> V</span></div>
             <p className="eyebrow">{slides[0].eyebrow}</p>
             <h2 className="script-heading">Wedding<br /><em>Invitation</em></h2>
             <div className="name-stack"><span>{WEDDING.groom}</span><b>&</b><span>{WEDDING.bride}</span></div>
@@ -365,7 +365,7 @@ setWishModalOpen(false);
             <div className="blessings-heading"><span>✦</span><p>BLESSINGS FROM LOVED ONES</p><span>✦</span></div>
             {wishes.length > 0 ? <div className="blessings-list" aria-live="polite">
               {wishes.map(item => <article className="blessing-card" key={item.id}>
-                <div className="blessing-card-head"><div className="blessing-avatar"><Heart size={18} fill="currentColor" /></div><div className="blessing-person"><strong>{item.name}</strong><span>{item.relation}</span></div><Heart className="blessing-heart" size={17} fill="currentColor" /></div>
+                <div className="blessing-card-head"><div className="blessing-avatar"><Heart size={18} fill="currentColor" /></div><div className="blessing-person"><strong>{item.name}</strong><span>{item.relationship}</span></div><Heart className="blessing-heart" size={17} fill="currentColor" /></div>
                 <p className="blessing-message">{item.message}</p><div className="blessing-card-foot"><span>With love & blessings ✨</span><button type="button" onClick={() => sendWish(item.message)} aria-label={`Share ${item.name}'s wish on WhatsApp`}><MessageCircle size={14} /> Share</button></div>
               </article>)}
             </div> : <div className="blessings-empty"><Heart size={21} /><p>Be the first to leave a loving blessing for the couple.</p></div>}
@@ -397,7 +397,7 @@ setWishModalOpen(false);
           <label htmlFor="wish-sender-message">Your Blessings / Message <span>*</span></label>
           <textarea id="wish-sender-message" value={wishMessage} onChange={event => setWishMessage(event.target.value)} placeholder="Write your heartfelt blessing..." rows={4} maxLength={500} required />
           <button type="submit" className="wish-submit-button"><Heart size={17} fill="currentColor" /> Send Wishes & Blessings</button>
-          <button type="button" className="wish-whatsapp-button" onClick={() => sendWish(wishMessage)}><MessageCircle size={17} /> Continue on WhatsApp</button>
+          {/* <button type="button" className="wish-whatsapp-button" onClick={() => sendWish(wishMessage)}><MessageCircle size={17} /> Continue on WhatsApp</button> */}
         </form>
         <p className="wish-modal-note">Your wish will appear below on this page. WhatsApp sharing is optional.</p>
       </section>
@@ -425,7 +425,7 @@ setWishModalOpen(false);
 
     {/* Full invitation sheet used for direct PDF export; no print dialog. */}
     <div className="pdf-stage" aria-hidden="true"><article id="pdf-invitation" className="pdf-sheet">
-      <div className="pdf-border"><div className="pdf-emblem"><Heart fill="currentColor" size={25} /><span>D & V</span></div><p className="pdf-kicker">WITH THE BLESSINGS OF OUR FAMILIES</p><h1>Wedding Invitation</h1><div className="pdf-names">{WEDDING.groom}<span>&</span>{WEDDING.bride}</div><p className="pdf-blessing">{WEDDING.blessing}</p><div className="pdf-rule">❦</div>
+      <div className="pdf-border"><div className="pdf-emblem"><Heart fill="currentColor" size={25} /><span>S & V</span></div><p className="pdf-kicker">WITH THE BLESSINGS OF OUR FAMILIES</p><h1>Wedding Invitation</h1><div className="pdf-names">{WEDDING.groom}<span>&</span>{WEDDING.bride}</div><p className="pdf-blessing">{WEDDING.blessing}</p><div className="pdf-rule">❦</div>
         <div className="pdf-family-grid"><div><small>GROOM'S FAMILY</small><p>{WEDDING.groomParents}</p></div><div><small>BRIDE'S FAMILY</small><p>{WEDDING.brideParents}</p></div></div>
         <h2>Wedding Reception</h2><p className="pdf-date">{WEDDING.receptionDateLabel}</p><p>{WEDDING.receptionTime}</p><div className="pdf-rule">✦</div><h2>Muhurtham</h2><p className="pdf-date">{WEDDING.muhurthamDateLabel}</p><p>{WEDDING.muhurthamTime}</p><div className="pdf-venue"><MapPin size={18} /><h3>{WEDDING.venue}</h3><p>{WEDDING.address}</p></div><p className="pdf-tamil" lang="ta">திருமண வரவேற்பு விழா மற்றும் திருமண மங்கள நிகழ்விற்கு தங்களை அன்புடன் அழைக்கிறோம்.</p><p className="pdf-tamil" lang="ta">தங்களின் அன்பான வருகையையும், வாழ்த்துகளையும் எதிர்பார்க்கிறோம்.</p><div className="pdf-bottom">WITH LOVE, {WEDDING.groom} & {WEDDING.bride} ♡</div></div>
     </article></div>
