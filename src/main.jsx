@@ -99,6 +99,7 @@ function App() {
   const [opened, setOpened] = useState(false);
   const [slide, setSlide] = useState(0);
   const [musicOn, setMusicOn] = useState(false);
+  const [musicManuallyOff, setMusicManuallyOff] = useState(false);
   const [wish, setWish] = useState('Wishing you a life filled with prosperity and happiness! May D. Sowndhararajan & R. Vanitha be blessed with a beautiful life filled with endless love, joy, and togetherness. 💗');
   const [copied, setCopied] = useState(false);
   const [musicMessage, setMusicMessage] = useState('');
@@ -145,42 +146,57 @@ useEffect(() => {
 
 useEffect(() => {
   const audio = document.getElementById('wedding-audio');
-
   if (!audio) return;
 
   audio.volume = 0.5;
 
-  audio.play()
-    .then(() => {
-      setMusicOn(true);
-      setMusicMessage('Music playing');
-    })
-    .catch(() => {
-      setMusicOn(false);
+  const handleVisibilityChange = async () => {
+    if (document.hidden) {
+      audio.pause();
+      return;
+    }
+
+    if (!musicManuallyOff && audio.paused) {
+      try {
+        await audio.play();
+      } catch (error) {
+        setMusicMessage('Click Music to start');
+      }
+    }
+  };
+
+  document.addEventListener('visibilitychange', handleVisibilityChange);
+
+  if (!document.hidden && !musicManuallyOff && audio.paused) {
+    audio.play().catch(() => {
       setMusicMessage('Click Music to start');
     });
-}, []);
+  }
+
+  return () => {
+    document.removeEventListener('visibilitychange', handleVisibilityChange);
+  };
+}, [musicManuallyOff]);
 
   
 
 
 const toggleMusic = async () => {
   const audio = document.getElementById('wedding-audio');
-
   if (!audio) return;
 
   if (!audio.paused) {
     audio.pause();
+    setMusicManuallyOff(true);
     setMusicOn(false);
     setMusicMessage('Music paused');
   } else {
     try {
       await audio.play();
+      setMusicManuallyOff(false);
       setMusicOn(true);
       setMusicMessage('Music playing');
     } catch (error) {
-      console.log('Browser blocked autoplay:', error);
-      setMusicOn(false);
       setMusicMessage('Click Music to start');
     }
   }
