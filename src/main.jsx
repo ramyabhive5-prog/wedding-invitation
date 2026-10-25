@@ -150,34 +150,41 @@ useEffect(() => {
 
   audio.volume = 0.5;
 
-  const handleVisibilityChange = async () => {
+  const tryPlayMusic = async () => {
+    if (document.hidden || musicManuallyOff) return;
+
+    try {
+      await audio.play();
+      setMusicOn(true);
+      setMusicMessage('');
+    } catch (error) {
+      setMusicOn(false);
+      setMusicMessage('Tap Open Invitation to start music');
+    }
+  };
+
+  tryPlayMusic();
+
+  const handleVisibilityChange = () => {
     if (document.hidden) {
       audio.pause();
-      return;
-    }
-
-    if (!musicManuallyOff && audio.paused) {
-      try {
-        await audio.play();
-      } catch (error) {
-        setMusicMessage('Click Music to start');
-      }
+    } else {
+      tryPlayMusic();
     }
   };
 
-  document.addEventListener('visibilitychange', handleVisibilityChange);
-
-  if (!document.hidden && !musicManuallyOff && audio.paused) {
-    audio.play().catch(() => {
-      setMusicMessage('Click Music to start');
-    });
-  }
+  document.addEventListener(
+    'visibilitychange',
+    handleVisibilityChange
+  );
 
   return () => {
-    document.removeEventListener('visibilitychange', handleVisibilityChange);
+    document.removeEventListener(
+      'visibilitychange',
+      handleVisibilityChange
+    );
   };
 }, [musicManuallyOff]);
-
   
 
 
@@ -279,6 +286,7 @@ setWishModalOpen(false);
     <audio
   id="wedding-audio"
   src="/wedding-song.mp3"
+  autoPlay
   loop
   preload="auto"
 />
@@ -300,7 +308,32 @@ setWishModalOpen(false);
           <div className="envelope-left" /><div className="envelope-right" /><div className="envelope-flap" />
           <div className="wax-seal"><Heart size={21} fill="currentColor" /><span>D♥V</span></div>
         </div> */}
-        <button className="open-button" onClick={() => { setOpened(true); setSlide(0); }}><Sparkles size={17} /> Open Invitation <ArrowRight size={17} /></button>
+        
+<button
+  className="open-button"
+  onClick={async () => {
+    const audio = document.getElementById('wedding-audio');
+
+    setOpened(true);
+    setSlide(0);
+
+    if (audio) {
+      try {
+        await audio.play();
+        setMusicOn(true);
+        setMusicManuallyOff(false);
+        setMusicMessage('');
+      } catch (error) {
+        setMusicMessage('Tap Music to play');
+      }
+    }
+  }}
+>
+  <Sparkles size={17} />
+  Open Invitation
+  <ArrowRight size={17} />
+</button>
+
         <p className="cover-hint">TAP THE SEAL TO OPEN YOUR INVITATION</p>
       </div>
       <button className={`floating-music ${musicOn ? 'is-playing' : ''}`} onClick={toggleMusic} aria-label="Toggle wedding music">{musicOn ? <Volume2 /> : <Music2 />}<span>{musicOn ? 'Music On' : 'Music'}</span></button>
