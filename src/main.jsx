@@ -26,7 +26,7 @@ const WEDDING = {
   muhurthamTime: '6:00 AM – 7:30 AM',
   venue: 'Subramaniyar Thirumana Mandapam',
   address: 'Chennimalai Palayam Pirivu, Chennimalai – Kangayam Road',
-  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Subramaniyar+Thirumana+Mandapam+Chennimalai+Palayam+Pirivu',
+  mapUrl: 'https://maps.app.goo.gl/2Enys9AgzkrfUgZc9?g_st=aw',
   whatsapp: '91XXXXXXXXXX',
   blessing: 'With the blessings of our families, we joyfully invite you to celebrate our wedding and bless us as we begin our journey together.',
   tamilBlessing: 'தங்களின் அன்பான வருகையையும், வாழ்த்துகளையும் அன்புடன் எதிர்பார்க்கிறோம்.'
