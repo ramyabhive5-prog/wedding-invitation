@@ -142,12 +142,34 @@ useEffect(() => {
   const previous = () => setSlide(current => Math.max(current - 1, 0));
 
   
+
+useEffect(() => {
+  const audio = document.getElementById('wedding-audio');
+
+  if (!audio) return;
+
+  audio.volume = 0.5;
+
+  audio.play()
+    .then(() => {
+      setMusicOn(true);
+      setMusicMessage('Music playing');
+    })
+    .catch(() => {
+      setMusicOn(false);
+      setMusicMessage('Click Music to start');
+    });
+}, []);
+
+  
+
+
 const toggleMusic = async () => {
   const audio = document.getElementById('wedding-audio');
 
   if (!audio) return;
 
-  if (musicOn) {
+  if (!audio.paused) {
     audio.pause();
     setMusicOn(false);
     setMusicMessage('Music paused');
@@ -157,12 +179,13 @@ const toggleMusic = async () => {
       setMusicOn(true);
       setMusicMessage('Music playing');
     } catch (error) {
-      console.error('Audio playback failed:', error);
+      console.log('Browser blocked autoplay:', error);
       setMusicOn(false);
-      setMusicMessage('Unable to play music');
+      setMusicMessage('Click Music to start');
     }
   }
 };
+
 
 
   const downloadPDF = async () => {
@@ -237,7 +260,12 @@ setWishModalOpen(false);
     <FloatingDecor />
     <div className="ambient-orbit orbit-left" aria-hidden="true" />
     <div className="ambient-orbit orbit-right" aria-hidden="true" />
-    <audio id="wedding-audio" src="/wedding-song.mp3" loop preload="none" />
+    <audio
+  id="wedding-audio"
+  src="/wedding-song.mp3"
+  loop
+  preload="auto"
+/>
 
     {!opened ? <section className="cover-stage">
       <div className="cover-card">
