@@ -12,7 +12,7 @@ import { supabase } from './supabase';
 
 /* Update the WhatsApp number and add public/wedding-song.mp3 before publishing. */
 const WEDDING = {
-  groom: 'D. Sowndhararajan',
+  groom: 'D. Soundhararajan',
   groomQualification: 'B.E.',
   bride: 'R. Vanitha',
   brideQualification: 'B.Sc.',
@@ -100,7 +100,7 @@ function App() {
   const [slide, setSlide] = useState(0);
   const [musicOn, setMusicOn] = useState(false);
   const [musicManuallyOff, setMusicManuallyOff] = useState(false);
-  const [wish, setWish] = useState('Wishing you a life filled with prosperity and happiness! May D. Sowndhararajan & R. Vanitha be blessed with a beautiful life filled with endless love, joy, and togetherness. 💗');
+  const [wish, setWish] = useState('Wishing you a life filled with prosperity and happiness! May D. Soundhararajan & R. Vanitha be blessed with a beautiful life filled with endless love, joy, and togetherness. 💗');
   const [copied, setCopied] = useState(false);
   const [musicMessage, setMusicMessage] = useState('');
   const [printedCardOpen, setPrintedCardOpen] = useState(false);
@@ -225,7 +225,7 @@ const toggleMusic = async () => {
       const w = (canvas.width / 2) * ratio;
       const h = (canvas.height / 2) * ratio;
       pdf.addImage(image, 'PNG', (pageW - w) / 2, (pageH - h) / 2, w, h, undefined, 'FAST');
-      pdf.save('D-Sowndhararajan-R-Vanitha-Wedding-Invitation.pdf');
+      pdf.save('D-Soundhararajan-R-Vanitha-Wedding-Invitation.pdf');
     } catch (error) {
       console.error(error);
       alert('PDF download failed. Please try again.');
@@ -270,7 +270,7 @@ setWishModalOpen(false);
 
   // const sendWish = (message = wish) => {
   //   const number = '919345862145';
-  //   const text = message.trim() || 'Wishing D. Sowndhararajan & R. Vanitha a life filled with prosperity, love, and happiness. May their journey together be blessed with endless joy and togetherness! ❤️.';
+  //   const text = message.trim() || 'Wishing D. Soundhararajan & R. Vanitha a life filled with prosperity, love, and happiness. May their journey together be blessed with endless joy and togetherness! ❤️.';
   //   window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer');
   // };
 
@@ -421,7 +421,7 @@ setWishModalOpen(false);
         <div className="wish-modal-icon"><Heart size={23} fill="currentColor" /></div>
         <p className="eyebrow">A LITTLE NOTE FULL OF LOVE</p>
         <h2 id="wish-modal-title">Share Your Blessings</h2>
-        <p className="wish-modal-intro">Leave your warm wishes and prayers for D. Sowndhararajan & R. Vanitha.</p>
+        <p className="wish-modal-intro">Leave your warm wishes and prayers for D. Soundhararajan & R. Vanitha.</p>
         <form onSubmit={submitWish} className="wish-form">
           <label htmlFor="wish-sender-name">Your Name <span>*</span></label>
           <input id="wish-sender-name" value={wishName} onChange={event => setWishName(event.target.value)} placeholder="e.g. Name & Family" maxLength={70} required />
@@ -447,9 +447,9 @@ setWishModalOpen(false);
         </div>
         
         <div className="printed-card-preview">
-          <img src="/printed-wedding-card.jpg" alt="D. Sowndhararajan and R. Vanitha printed wedding invitation, English and Tamil sides" />
+          <img src="/printed-wedding-card.jpg" alt="D. Soundhararajan and R. Vanitha printed wedding invitation, English and Tamil sides" />
         </div>
-        <a className="printed-download" href="/printed-wedding-card.pdf" download="D-Sowndhararajan-R-Vanitha-Printed-Wedding-Card.pdf">
+        <a className="printed-download" href="/printed-wedding-card.pdf" download="D-Soundhararajan-R-Vanitha-Printed-Wedding-Card.pdf">
           <Download size={18} /> Download Printed Invitation PDF
         </a>
         <p className="printed-download-note">PDF நேரடியாக download ஆகும். Print window திறக்காது.</p>
