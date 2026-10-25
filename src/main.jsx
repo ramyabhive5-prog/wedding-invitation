@@ -388,6 +388,28 @@ setWishModalOpen(false);
             <div className="round-icon"><MapPin size={25} /></div><p className="eyebrow">{slides[4].eyebrow}</p><h2>{slides[4].title}</h2><Ornament>✦</Ornament>
             <div className="venue-illustration"><div className="venue-arch"><Heart size={22} fill="currentColor" /><span>WITH LOVE</span></div><div className="venue-lamps"><span>🪔</span><span>✿</span><span>🪔</span></div></div>
             <div className="venue-details"><span className="role-label">WEDDING VENUE</span><h3>{WEDDING.venue}</h3><p>{WEDDING.address}</p><div className="venue-actions"><a href={WEDDING.mapUrl} target="_blank" rel="noreferrer" className="soft-button">Open in Maps <ExternalLink size={15} /></a><button className="soft-button" onClick={copyAddress}>{copied ? <Check size={15} /> : <Copy size={15} />}{copied ? 'Copied' : 'Copy Address'}</button></div></div>
+            
+            
+<div className="venue-contact">
+  <p> Contact Us</p>
+
+  <a href="tel:+917010553794" className="venue-call">
+    <span>📞</span> +91 70105 53794
+  </a>
+
+  <a
+    href="https://wa.me/917010553794"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="venue-whatsapp"
+  >
+    <span className="whatsapp-icon">
+  <i className="fa-brands fa-whatsapp"></i>
+</span> WhatsApp Us
+  </a>
+</div>
+
+
             <div className="tamil-blessing" lang="ta">தங்கள் வருகையால் எங்கள் மகிழ்ச்சியைப் பகிர்ந்து கொள்ள அன்புடன் அழைக்கிறோம்.</div>
           </section>}
 
