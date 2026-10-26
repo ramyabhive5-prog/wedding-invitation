@@ -391,7 +391,7 @@ setWishModalOpen(false);
             
             
 <div className="venue-contact">
-  <p> Contact Us</p>
+  <p> Need assistance contact</p>
 
   <a href="tel:+917010553794" className="venue-call">
     <span>📞</span> +91 70105 53794
@@ -454,7 +454,7 @@ setWishModalOpen(false);
           <button type="submit" className="wish-submit-button"><Heart size={17} fill="currentColor" /> Send Wishes & Blessings</button>
           {/* <button type="button" className="wish-whatsapp-button" onClick={() => sendWish(wishMessage)}><MessageCircle size={17} /> Continue on WhatsApp</button> */}
         </form>
-        <p className="wish-modal-note">Your wish will appear below on this page. WhatsApp sharing is optional.</p>
+        
       </section>
     </div>}
 
@@ -474,7 +474,7 @@ setWishModalOpen(false);
         <a className="printed-download" href="/printed-wedding-card.pdf" download="D-Soundhararajan-R-Vanitha-Printed-Wedding-Card.pdf">
           <Download size={18} /> Download Printed Invitation PDF
         </a>
-        <p className="printed-download-note">PDF நேரடியாக download ஆகும். Print window திறக்காது.</p>
+       
       </section>
     </div>}
 
